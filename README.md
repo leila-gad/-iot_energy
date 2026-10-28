@@ -1,6 +1,5 @@
 # INPT Campus Energy Monitoring — Virtual IoT Lab
 
-This is a software-only educational simulation inspired by **“Development of a Low-Cost Internet of Things Platform for Three-Phase Energy Monitoring in a University Campus”** (IoT 2025, 6, 27). It replaces damaged physical sensor nodes with virtual meters so the data pipeline and dashboards can still be demonstrated.
 
 ## What it simulates
 
