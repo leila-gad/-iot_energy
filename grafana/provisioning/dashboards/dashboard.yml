@@ -1,0 +1,10 @@
+apiVersion: 1
+providers:
+  - name: Campus Energy
+    orgId: 1
+    folder: IoT Energy Monitoring
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards

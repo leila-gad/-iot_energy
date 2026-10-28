@@ -1,0 +1,468 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influx-energy"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "kw",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_building",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influx-energy"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "energy_readings",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "total_active_power_kw"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Active power by building (kW)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influx-energy"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "kw\u22c5h",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_building",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influx-energy"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "energy_readings",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "energy_kwh"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Cumulative energy by building (kWh)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influx-energy"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "volt",
+          "min": 200,
+          "max": 250
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_building L1",
+          "measurement": "energy_readings",
+          "select": [
+            [
+              {
+                "params": [
+                  "L1_voltage_v"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "groupBy": [
+            {
+              "type": "time",
+              "params": [
+                "$__interval"
+              ]
+            },
+            {
+              "type": "fill",
+              "params": [
+                "null"
+              ]
+            }
+          ],
+          "tags": [],
+          "refId": "A",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC"
+        },
+        {
+          "alias": "$tag_building L2",
+          "measurement": "energy_readings",
+          "select": [
+            [
+              {
+                "params": [
+                  "L2_voltage_v"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "groupBy": [
+            {
+              "type": "time",
+              "params": [
+                "$__interval"
+              ]
+            },
+            {
+              "type": "fill",
+              "params": [
+                "null"
+              ]
+            }
+          ],
+          "tags": [],
+          "refId": "B",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC"
+        },
+        {
+          "alias": "$tag_building L3",
+          "measurement": "energy_readings",
+          "select": [
+            [
+              {
+                "params": [
+                  "L3_voltage_v"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "groupBy": [
+            {
+              "type": "time",
+              "params": [
+                "$__interval"
+              ]
+            },
+            {
+              "type": "fill",
+              "params": [
+                "null"
+              ]
+            }
+          ],
+          "tags": [],
+          "refId": "C",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC"
+        }
+      ],
+      "title": "Three-phase voltage (V)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influx-energy"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "amp",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "alias": "$tag_building L1",
+          "measurement": "energy_readings",
+          "select": [
+            [
+              {
+                "params": [
+                  "L1_current_a"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "groupBy": [
+            {
+              "type": "time",
+              "params": [
+                "$__interval"
+              ]
+            },
+            {
+              "type": "fill",
+              "params": [
+                "null"
+              ]
+            }
+          ],
+          "tags": [],
+          "refId": "A",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC"
+        },
+        {
+          "alias": "$tag_building L2",
+          "measurement": "energy_readings",
+          "select": [
+            [
+              {
+                "params": [
+                  "L2_current_a"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "groupBy": [
+            {
+              "type": "time",
+              "params": [
+                "$__interval"
+              ]
+            },
+            {
+              "type": "fill",
+              "params": [
+                "null"
+              ]
+            }
+          ],
+          "tags": [],
+          "refId": "B",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC"
+        },
+        {
+          "alias": "$tag_building L3",
+          "measurement": "energy_readings",
+          "select": [
+            [
+              {
+                "params": [
+                  "L3_current_a"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "groupBy": [
+            {
+              "type": "time",
+              "params": [
+                "$__interval"
+              ]
+            },
+            {
+              "type": "fill",
+              "params": [
+                "null"
+              ]
+            }
+          ],
+          "tags": [],
+          "refId": "C",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC"
+        }
+      ],
+      "title": "Three-phase current (A)",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [
+    "IoT",
+    "energy",
+    "simulated"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "INPT Campus Energy Monitoring - Virtual Lab",
+  "uid": "inpt-energy-virtual",
+  "version": 1
+}

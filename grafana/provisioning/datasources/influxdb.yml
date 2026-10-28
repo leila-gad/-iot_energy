@@ -1,0 +1,10 @@
+apiVersion: 1
+datasources:
+  - name: Campus Energy InfluxDB
+    uid: influx-energy
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    database: energy
+    isDefault: true
+    editable: true
